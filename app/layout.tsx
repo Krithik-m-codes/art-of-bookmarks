@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -28,11 +28,6 @@ export const metadata: Metadata = {
     email: false,
     telephone: false,
     address: false,
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
   },
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
@@ -69,6 +64,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#6366f1",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -76,10 +78,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="theme-color" content="#6366f1" />
-      </head>
       <body className={`${poppins.variable} antialiased bg-linear-to-br from-blue-50 via-blue-50 to-purple-50`}>
         {children}
       </body>
